@@ -12,4 +12,4 @@ Scenario: Looking up the definition of 'three'
 Given the user is on the Wikionary home page
 When the user looks up the definition of the word 'three'
 
-
+ 
