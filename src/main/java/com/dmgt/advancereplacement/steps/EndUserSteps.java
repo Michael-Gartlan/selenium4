@@ -12,26 +12,26 @@ import static org.fest.assertions.Assertions.assertThat;
 
 public class EndUserSteps extends ScenarioSteps {
 
-    AccountsPage dictionaryPage;
+    AccountsPage accountsPage;
 
     @Step
     public void enters(String keyword) {
-        dictionaryPage.enter_keywords(keyword);
+    	accountsPage.enter_keywords(keyword);
     }
 
     @Step
     public void starts_search() {
-        dictionaryPage.lookup_terms();
+    	accountsPage.lookup_terms();
     }
 
     @Step
     public void should_see_definition(String definition) {
-        assertThat(dictionaryPage.getDefinitions()).contains(definition);
+        assertThat(accountsPage.getDefinitions()).contains(definition);
     }
 
     @Step
     public void is_the_home_page() {
-        dictionaryPage.open();
+    	accountsPage.open();
     }
 
     @Step
