@@ -3,6 +3,8 @@ package com.dmgt.advancereplacement.pages;
 import ch.lambdaj.function.convert.Converter;
 import net.thucydides.core.annotations.DefaultUrl;
 
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.How;
@@ -10,6 +12,8 @@ import org.openqa.selenium.support.How;
 
 
 import org.openqa.selenium.support.FindBy;
+
+
 
 
 
@@ -219,11 +223,6 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[value='Create Direct Order']")
 	private WebElement createDirectOrder;
 
-	public void login(String username, String password) {
-		userName.sendKeys(username);
-		myPassword.sendKeys(password);
-		loginButton.click();
-	}
 
     public void enter_keywords(String keyword) {
         searchTerms.type(keyword);
@@ -232,7 +231,19 @@ public class AccountsPage extends PageObject {
     public void lookup_terms() {
         lookupButton.click();
     }
+    
+    public void enterUserName(String username) {
+    	userName.sendKeys(username);
+    }
 
+    public void enterPassword(String password) {
+    	myPassword.sendKeys(password);
+    }
+
+    public void login() {
+    	loginButton.click();
+    }
+    
     public List<String> getDefinitions() {
         WebElementFacade definitionList = find(By.tagName("ol"));
         List<WebElement> results = definitionList.findElements(By.tagName("li"));

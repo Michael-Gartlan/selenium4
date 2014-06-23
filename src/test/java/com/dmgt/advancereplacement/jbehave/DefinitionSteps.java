@@ -1,7 +1,9 @@
 package com.dmgt.advancereplacement.jbehave;
 
 import net.thucydides.core.annotations.Steps;
+
 import org.jbehave.core.annotations.Given;
+import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -17,6 +19,12 @@ public class DefinitionSteps {
         endUser.is_the_home_page();
     }
 
+	@When("I login with username <username> and password <password>")
+	public void login(@Named("username") String username, @Named("password") String password)
+			throws InterruptedException {
+		endUser.login(username, password);
+	}
+    
     @When("the user looks up the definition of the word '$word'")
     public void whenTheUserLooksUpTheDefinitionOf(String word) {
         endUser.looks_for(word);
@@ -26,5 +34,7 @@ public class DefinitionSteps {
     public void thenTheyShouldSeeADefinitionContainingTheWords(String definition) {
         endUser.should_see_definition(definition);
     }
+    
+
 
 }

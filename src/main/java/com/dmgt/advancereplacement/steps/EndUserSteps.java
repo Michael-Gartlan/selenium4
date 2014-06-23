@@ -6,6 +6,9 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import java.util.List;
 
+import org.jbehave.core.annotations.Named;
+import org.jbehave.core.annotations.When;
+
 import com.dmgt.advancereplacement.pages.AccountsPage;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -33,10 +36,18 @@ public class EndUserSteps extends ScenarioSteps {
     public void is_the_home_page() {
     	accountsPage.open();
     }
+    
+    @Step
+    public void login(String username, String password) {
+    	accountsPage.enterUserName(username);
+    	accountsPage.enterPassword(password);
+    	accountsPage.login();
+	}
 
     @Step
     public void looks_for(String term) {
         enters(term);
         starts_search();
-    }
+    }    
+    
 }
