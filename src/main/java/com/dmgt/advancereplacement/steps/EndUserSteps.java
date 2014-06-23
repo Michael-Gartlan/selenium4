@@ -53,9 +53,12 @@ public class EndUserSteps extends ScenarioSteps {
 		
 		accountsPage.continueButton();
 
-		accountsPage.accountName("Mr");
-//		
-////		salutation.sendKeys("Mr.");
+		accountsPage.accountName("MyNewAccount");
+
+		accountsPage.parentAccount("Mike - Client");
+
+		//		
+////		salutation.sendKeys("MyNewAccount.");
 ////		firstName.sendKeys("firstName");
 //		accountName.sendKeys("MyNewAccount");
 //		parentAccount.sendKeys("Mike - Client");
