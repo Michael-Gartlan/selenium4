@@ -3,14 +3,16 @@ package com.dmgt.advancereplacement.steps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-import java.util.List;
-import static org.fest.assertions.Assertions.assertThat;
 
-import com.dmgt.advancereplacement.pages.DictionaryPage;
+import java.util.List;
+
+import com.dmgt.advancereplacement.pages.AccountsPage;
+
+import static org.fest.assertions.Assertions.assertThat;
 
 public class EndUserSteps extends ScenarioSteps {
 
-    DictionaryPage dictionaryPage;
+    AccountsPage dictionaryPage;
 
     @Step
     public void enters(String keyword) {
