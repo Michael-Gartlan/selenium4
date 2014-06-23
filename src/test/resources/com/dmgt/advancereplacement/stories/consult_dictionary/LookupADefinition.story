@@ -8,8 +8,5 @@ Scenario: Looking up the definition of 'two'
 Given the user is on the Wikionary home page
 When the user looks up the definition of the word 'two'
 
-Scenario: Looking up the definition of 'three'
-Given the user is on the Wikionary home page
-When the user looks up the definition of the word 'three'
 
  
