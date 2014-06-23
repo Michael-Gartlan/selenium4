@@ -48,6 +48,54 @@ public class EndUserSteps extends ScenarioSteps {
     public void looks_for(String term) {
         enters(term);
         starts_search();
-    }    
+    } 
+    
+    
+    
+	public void newAccount() {
+		accountsPage.newAccount();
+		accountsPage.newAccountChild();
+		
+		
+//		recordType.sendKeys("Agency");
+//		
+//		continueButton.click();	
+//		
+////		salutation.sendKeys("Mr.");
+////		firstName.sendKeys("firstName");
+//		accountName.sendKeys("MyNewAccount");
+//		parentAccount.sendKeys("Mike - Client");
+//		phone.sendKeys("07432471793");
+//		website.sendKeys("http://www.parcelflow.co.uk");
+//		employees.sendKeys("101");
+//		companyRegistration.sendKeys("abcdefghij");
+//		description.sendKeys("This is a description field");
+//		
+////		classifiedMainCategory.sendKeys("Health");
+//
+//		
+//		correspondanceStreet.sendKeys("11 Felix Avenue");
+//		correspondanceCity.sendKeys("Dallas");
+//		
+//		type.sendKeys("Client");
+//
+//		correspondanceState.sendKeys("Texas");
+//		correspondanceZip.sendKeys("75204");
+//		correspondanceCountry.sendKeys("USA");
+//		
+//		
+//		billingStreet.sendKeys("5 McKinney Ave");
+//		billingCity.sendKeys("Dallas");
+//		billingState.sendKeys("Texas");
+//		billingPostCode.sendKeys("75204");
+//		billingCountry.sendKeys("USA");
+//		saveButton.click();
+		
+		
+	}
+
+    
+    
+    
     
 }

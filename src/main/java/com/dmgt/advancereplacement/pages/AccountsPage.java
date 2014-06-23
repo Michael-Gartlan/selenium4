@@ -244,6 +244,14 @@ public class AccountsPage extends PageObject {
     	loginButton.click();
     }
     
+    public void newAccount() {
+    	newAccountButton.click();
+    }
+
+    public void newAccountChild() {
+    	newAccountButtonChild.click();
+    }
+    
     public List<String> getDefinitions() {
         WebElementFacade definitionList = find(By.tagName("ol"));
         List<WebElement> results = definitionList.findElements(By.tagName("li"));

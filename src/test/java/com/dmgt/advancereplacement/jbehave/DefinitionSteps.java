@@ -25,6 +25,12 @@ public class DefinitionSteps {
 		endUser.login(username, password);
 	}
     
+	@When("I create a new account")
+	public void newAccountButton()
+			throws InterruptedException {
+		endUser.newAccount();
+	}
+	
     @When("the user looks up the definition of the word '$word'")
     public void whenTheUserLooksUpTheDefinitionOf(String word) {
         endUser.looks_for(word);
