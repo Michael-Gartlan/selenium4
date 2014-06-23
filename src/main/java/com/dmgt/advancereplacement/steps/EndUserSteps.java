@@ -1,16 +1,8 @@
 package com.dmgt.advancereplacement.steps;
 
 import net.thucydides.core.annotations.Step;
-import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
-
-import java.util.List;
-
-import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.When;
-
 import com.dmgt.advancereplacement.pages.AccountsPage;
-
 import static org.fest.assertions.Assertions.assertThat;
 
 public class EndUserSteps extends ScenarioSteps {
@@ -51,15 +43,17 @@ public class EndUserSteps extends ScenarioSteps {
     } 
     
     
-    
+    @Step
 	public void newAccount() {
+    	accountsPage.clickLinkNewAccount();
 		accountsPage.newAccount();
 		accountsPage.newAccountChild();
 		
+		accountsPage.recordType("Agency");
 		
-//		recordType.sendKeys("Agency");
-//		
-//		continueButton.click();	
+		accountsPage.continueButton();
+
+		accountsPage.accountName("Mr");
 //		
 ////		salutation.sendKeys("Mr.");
 ////		firstName.sendKeys("firstName");

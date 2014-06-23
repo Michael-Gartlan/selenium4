@@ -124,6 +124,7 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[value=' New ']")
 	private WebElement newAccountButton;
 
+	
 	@FindBy(how = How.XPATH, using = "id('j_id0:j_id1:i:f:pb:pbb:bottom:next')")
 	private WebElement next;
 
@@ -248,8 +249,25 @@ public class AccountsPage extends PageObject {
     	newAccountButton.click();
     }
 
+    public void clickLinkNewAccount() {
+    	accounts.click();
+    }
+    
     public void newAccountChild() {
     	newAccountButtonChild.click();
+    }
+    
+    public void recordType(String type) {
+    	recordType.sendKeys(type);
+    }
+
+    
+    public void accountName(String name) {
+    	accountName.sendKeys(name);
+    }
+    
+    public void continueButton() {
+    	continueButton.click();
     }
     
     public List<String> getDefinitions() {

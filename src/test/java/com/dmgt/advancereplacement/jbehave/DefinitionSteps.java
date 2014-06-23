@@ -15,7 +15,7 @@ public class DefinitionSteps {
     EndUserSteps endUser;
 
     @Given("the user is on the Salesforce home page")
-    public void givenTheUserIsOnTheWikionaryHomePage() {
+    public void givenTheUserIsOnTheSalesforceHomePage() {
         endUser.is_the_home_page();
     }
 
