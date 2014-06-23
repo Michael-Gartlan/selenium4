@@ -266,6 +266,10 @@ public class AccountsPage extends PageObject {
     	accountName.sendKeys(name);
     }
     
+    public void parentAccount(String name) {
+    	parentAccount.sendKeys(name);
+    }
+    
     public void continueButton() {
     	continueButton.click();
     }
