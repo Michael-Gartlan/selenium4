@@ -12,6 +12,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.FindBy;
 
 
+
 import net.thucydides.core.pages.WebElementFacade;
 //import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import static ch.lambdaj.Lambda.convert;
 
-@DefaultUrl("http://en.wiktionary.org/wiki/Wiktionary:Main_Page")
+@DefaultUrl("https://test.salesforce.com")
 public class AccountsPage extends PageObject {
 
     @FindBy(name="search")
@@ -218,6 +219,11 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[value='Create Direct Order']")
 	private WebElement createDirectOrder;
 
+	public void login(String username, String password) {
+		userName.sendKeys(username);
+		myPassword.sendKeys(password);
+		loginButton.click();
+	}
 
     public void enter_keywords(String keyword) {
         searchTerms.type(keyword);
