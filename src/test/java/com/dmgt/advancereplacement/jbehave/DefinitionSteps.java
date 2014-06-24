@@ -19,12 +19,14 @@ public class DefinitionSteps {
         endUser.is_the_home_page();
     }
 
-	@When("I login with username <username> and password <password>")
-	public void login(@Named("username") String username, @Named("password") String password)
+	@When("I login to glue as Mail user")
+	public void login()
 			throws InterruptedException {
-		endUser.login(username, password);
+		endUser.login("michael.gartlan@dmgmedia.co.uk.mailuser.uat", "Summer_12");
 	}
-    
+
+	
+	
 	@When("I navigate to the New Account page with Record Type '$recordType'")
 	public void navigateNewAccountPage(String recordType)
 			throws InterruptedException {
