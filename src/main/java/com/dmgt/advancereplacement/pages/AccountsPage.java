@@ -269,6 +269,10 @@ public class AccountsPage extends PageObject {
     public void accountName(String name) {
     	accountName.sendKeys(name);
     }
+
+    public void saveForm() {
+    	saveButton.click();
+    }
     
     public void parentAccount(String name) {
     	parentAccount.sendKeys(name);

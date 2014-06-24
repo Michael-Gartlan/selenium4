@@ -45,6 +45,12 @@ public class DefinitionSteps {
 		endUser.fillInMandatoryFieldsForBooking();
 	}
 	
+
+	@When("I click on Save")
+	public void saveForm()
+			throws InterruptedException {
+		endUser.saveForm();
+	}
 	
 	@When("I select Account Type as '$type'")
 	public void selectType(String type)

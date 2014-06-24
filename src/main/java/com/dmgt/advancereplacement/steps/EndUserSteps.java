@@ -104,6 +104,16 @@ public class EndUserSteps extends ScenarioSteps {
 	}
     
     @Step
+	public void fillInMandatoryFieldsForBilling() {    	
+		accountsPage.accountName("MyNewAccount");			
+	}
+    
+    @Step
+	public void saveForm() {    	
+		accountsPage.saveForm();			
+	}
+    
+    @Step
 	public void navigateNewAccountPage(String recordType) {
     	
     	accountsPage.clickLinkNewAccount();
