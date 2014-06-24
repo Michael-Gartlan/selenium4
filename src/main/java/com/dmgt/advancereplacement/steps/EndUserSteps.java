@@ -98,6 +98,10 @@ public class EndUserSteps extends ScenarioSteps {
 		
 	}
 
+    @Step
+	public void fillInMandatoryFieldsForBooking() {    	
+		accountsPage.accountName("MyNewAccount");			
+	}
     
     @Step
 	public void navigateNewAccountPage(String recordType) {
