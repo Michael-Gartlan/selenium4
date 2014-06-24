@@ -25,6 +25,12 @@ public class DefinitionSteps {
 		endUser.login(username, password);
 	}
     
+	@When("I navigate to the New Account page with Record Type '$recordType'")
+	public void navigateNewAccountPage(String recordType)
+			throws InterruptedException {
+		endUser.navigateNewAccountPage(recordType);
+	}
+	
 	@When("I create a new account")
 	public void newAccountButton()
 			throws InterruptedException {

@@ -42,20 +42,61 @@ public class EndUserSteps extends ScenarioSteps {
         starts_search();
     } 
     
-    
+
     @Step
 	public void newAccount() {
+    	
     	accountsPage.clickLinkNewAccount();
 		accountsPage.newAccount();
 		accountsPage.newAccountChild();
-		
 		accountsPage.recordType("Agency");
-		
 		accountsPage.continueButton();
-
 		accountsPage.accountName("MyNewAccount");
-
 		accountsPage.parentAccount("Mike - Client");
+
+		//		
+////		salutation.sendKeys("MyNewAccount.");
+////		firstName.sendKeys("firstName");
+//		accountName.sendKeys("MyNewAccount");
+//		parentAccount.sendKeys("Mike - Client");
+//		phone.sendKeys("07432471793");
+//		website.sendKeys("http://www.parcelflow.co.uk");
+//		employees.sendKeys("101");
+//		companyRegistration.sendKeys("abcdefghij");
+//		description.sendKeys("This is a description field");
+//		
+////		classifiedMainCategory.sendKeys("Health");
+//
+//		
+//		correspondanceStreet.sendKeys("11 Felix Avenue");
+//		correspondanceCity.sendKeys("Dallas");
+//		
+//		type.sendKeys("Client");
+//
+//		correspondanceState.sendKeys("Texas");
+//		correspondanceZip.sendKeys("75204");
+//		correspondanceCountry.sendKeys("USA");
+//		
+//		
+//		billingStreet.sendKeys("5 McKinney Ave");
+//		billingCity.sendKeys("Dallas");
+//		billingState.sendKeys("Texas");
+//		billingPostCode.sendKeys("75204");
+//		billingCountry.sendKeys("USA");
+//		saveButton.click();
+		
+		
+	}
+
+    
+    @Step
+	public void navigateNewAccountPage(String recordType) {
+    	
+    	accountsPage.clickLinkNewAccount();
+		accountsPage.newAccount();
+		accountsPage.newAccountChild();
+		accountsPage.recordType(recordType);
+		accountsPage.continueButton();
 
 		//		
 ////		salutation.sendKeys("MyNewAccount.");
