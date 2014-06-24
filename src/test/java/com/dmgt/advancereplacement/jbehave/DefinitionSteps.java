@@ -39,6 +39,12 @@ public class DefinitionSteps {
 		endUser.newAccount();
 	}
 	
+	@When("I select Account Type as '$type'")
+	public void selectType(String type)
+			throws InterruptedException {
+		endUser.selectType(type);
+	}
+	
     @When("the user looks up the definition of the word '$word'")
     public void whenTheUserLooksUpTheDefinitionOf(String word) {
         endUser.looks_for(word);

@@ -41,6 +41,17 @@ public class EndUserSteps extends ScenarioSteps {
         enters(term);
         starts_search();
     } 
+
+    
+    
+    
+    @Step
+	public void selectType(String mytype) {
+    	accountsPage.type(mytype);
+						
+	}
+
+    
     
 
     @Step

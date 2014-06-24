@@ -245,6 +245,10 @@ public class AccountsPage extends PageObject {
     	loginButton.click();
     }
     
+    public void type(String mytype) {
+    	type.sendKeys(mytype);
+    }
+    
     public void newAccount() {
     	newAccountButton.click();
     }
