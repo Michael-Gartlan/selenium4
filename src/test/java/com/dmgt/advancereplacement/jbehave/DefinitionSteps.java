@@ -39,6 +39,13 @@ public class DefinitionSteps {
 		endUser.newAccount();
 	}
 	
+	@When("I fill in Mandatory fields for Booking Agency")
+	public void fillInMandatoryFieldsForBooking()
+			throws InterruptedException {
+		endUser.fillInMandatoryFieldsForBooking();
+	}
+	
+	
 	@When("I select Account Type as '$type'")
 	public void selectType(String type)
 			throws InterruptedException {
