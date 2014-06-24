@@ -46,9 +46,8 @@ public class EndUserSteps extends ScenarioSteps {
     
     
     @Step
-	public void selectType(String mytype) {
-    	accountsPage.type(mytype);
-						
+	public void selectType(String mytype) {    	
+    	accountsPage.type(mytype);						
 	}
 
     
