@@ -8,10 +8,12 @@ import org.jbehave.core.annotations.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.How;
+import static org.fest.assertions.Assertions.assertThat;
 
 
 
 import org.openqa.selenium.support.FindBy;
+
 
 
 
@@ -22,6 +24,8 @@ import net.thucydides.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
 
 import java.util.List;
+
+import javax.swing.JOptionPane;
 
 import static ch.lambdaj.Lambda.convert;
 
@@ -270,6 +274,11 @@ public class AccountsPage extends PageObject {
     	accountName.sendKeys(name);
     }
 
+    
+    public void checkPageSavedSuccessfully(String name) {
+    	
+    }
+    
     public void saveForm() {
     	saveButton.click();
     }
@@ -280,6 +289,32 @@ public class AccountsPage extends PageObject {
     
     public void continueButton() {
     	continueButton.click();
+    }
+    
+    public int getResult() {
+//        WebElementFacade result = find(By.xpath("//*[contains(text(),'rror')]"));
+//    	WebElementFacade result = element(By.xpath("//*[contains(text(),'xxx')]"));
+    	
+    	
+    	WebElementFacade result = null;
+    	int returnValue = 0;
+    	
+    	try
+    	{
+    		result = element(By.xpath("//*[contains(text(),'rror')]"));
+//    		JOptionPane.showMessageDialog(null, result.getText());     		    		
+    		returnValue = 1;
+    	
+    	}
+    	catch(Exception e)
+    	{
+//    		JOptionPane.showMessageDialog(null, e);
+    		returnValue = 0;
+    	}
+    	
+    	JOptionPane.showMessageDialog(null, returnValue); 
+        
+        return returnValue;
     }
     
     public List<String> getDefinitions() {

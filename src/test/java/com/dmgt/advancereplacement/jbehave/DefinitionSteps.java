@@ -1,7 +1,9 @@
 package com.dmgt.advancereplacement.jbehave;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import net.thucydides.core.annotations.Steps;
 
+import org.hamcrest.Matchers;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
@@ -24,8 +26,6 @@ public class DefinitionSteps {
 			throws InterruptedException {
 		endUser.login("michael.gartlan@dmgmedia.co.uk.mailuser.uat", "Summer_12");
 	}
-
-	
 	
 	@When("I navigate to the New Account page with Record Type '$recordType'")
 	public void navigateNewAccountPage(String recordType)
@@ -44,7 +44,12 @@ public class DefinitionSteps {
 			throws InterruptedException {
 		endUser.fillInMandatoryFieldsForBooking();
 	}
-	
+		
+	@Then("page is Saved successfully without Error")
+	public void checkPageSavedSuccessfully()
+			throws InterruptedException {
+		endUser.checkPageSavedSuccessfully();
+	}
 
 	@When("I click on Save")
 	public void saveForm()

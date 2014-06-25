@@ -2,7 +2,9 @@ package com.dmgt.advancereplacement.steps;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+
 import com.dmgt.advancereplacement.pages.AccountsPage;
+
 import static org.fest.assertions.Assertions.assertThat;
 
 public class EndUserSteps extends ScenarioSteps {
@@ -19,11 +21,13 @@ public class EndUserSteps extends ScenarioSteps {
     	accountsPage.lookup_terms();
     }
 
+    
     @Step
     public void should_see_definition(String definition) {
-        assertThat(accountsPage.getDefinitions()).contains(definition);
+//        assertThat(dictionaryPage.getDefinitions()).contains(definition);
+    	assertThat(accountsPage.getResult()).isEqualTo(0);
     }
-
+    
     @Step
     public void is_the_home_page() {
     	accountsPage.open();
@@ -102,7 +106,7 @@ public class EndUserSteps extends ScenarioSteps {
 	public void fillInMandatoryFieldsForBooking() {    	
 		accountsPage.accountName("MyNewAccount");			
 	}
-    
+
     @Step
 	public void fillInMandatoryFieldsForBilling() {    	
 		accountsPage.accountName("MyNewAccount");			
@@ -111,6 +115,11 @@ public class EndUserSteps extends ScenarioSteps {
     @Step
 	public void saveForm() {    	
 		accountsPage.saveForm();			
+	}
+
+    @Step
+	public void checkPageSavedSuccessfully() {    	
+		accountsPage.checkPageSavedSuccessfully("MyNewAccount");			
 	}
     
     @Step
