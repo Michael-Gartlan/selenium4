@@ -23,7 +23,7 @@ public class EndUserSteps extends ScenarioSteps {
 
     
     @Step
-    public void should_see_definition(String definition) {
+    public void save_without_error() {
 //        assertThat(dictionaryPage.getDefinitions()).contains(definition);
     	assertThat(accountsPage.getResult()).isEqualTo(0);
     }

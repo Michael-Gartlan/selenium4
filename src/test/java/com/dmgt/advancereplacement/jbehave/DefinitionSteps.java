@@ -68,9 +68,9 @@ public class DefinitionSteps {
         endUser.looks_for(word);
     }
 
-    @Then("they should see the definition '$definition'")
-    public void thenTheyShouldSeeADefinitionContainingTheWords(String definition) {
-        endUser.should_see_definition(definition);
+    @Then("the account should be saved without error")
+    public void thenTheAccountShouldSaveWithoutError() {
+        endUser.save_without_error();
     }
     
 

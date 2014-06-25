@@ -5,4 +5,4 @@ When I navigate to the New Account page with Record Type 'Agency'
 When I select Account Type as 'Booking Agency'
 When I fill in Mandatory fields for Booking Agency
 And I click on Save
-Then they should see the definition 'l'
+Then the account should be saved without error
