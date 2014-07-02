@@ -24,7 +24,7 @@ public class DefinitionSteps {
 	@When("I login to glue as Mail user")
 	public void login()
 			throws InterruptedException {
-		endUser.login("michael.gartlan@dmgmedia.co.uk.mailuser.uat", "Summer_12");
+		endUser.login("michael.gartlan@dmgmedia.co.uk.prodmirror", "Autumn_12");
 	}
 	
 	@When("I navigate to the New Account page with Record Type '$recordType'")
@@ -43,6 +43,12 @@ public class DefinitionSteps {
 	public void fillInMandatoryFieldsForBooking()
 			throws InterruptedException {
 		endUser.fillInMandatoryFieldsForBooking();
+	}
+	
+	@When("I fill in Mandatory fields for Billing Agency")
+	public void fillInMandatoryFieldsForBilling()
+			throws InterruptedException {
+		endUser.fillInMandatoryFieldsForBilling();
 	}
 		
 	@Then("page is Saved successfully without Error")

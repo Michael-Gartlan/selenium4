@@ -8,11 +8,14 @@ import org.jbehave.core.annotations.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.How;
+
 import static org.fest.assertions.Assertions.assertThat;
 
 
 
+
 import org.openqa.selenium.support.FindBy;
+
 
 
 
@@ -32,7 +35,8 @@ import static ch.lambdaj.Lambda.convert;
 @DefaultUrl("https://test.salesforce.com")
 public class AccountsPage extends PageObject {
 
-    @FindBy(name="search")
+
+	@FindBy(name="search")
     private WebElementFacade searchTerms;
 
     @FindBy(name="go")
@@ -68,6 +72,11 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.XPATH, using = "//td[label='Employees']/following-sibling::td[1]/input")
 	private WebElement employees;
 
+	@FindBy(how = How.XPATH, using = "//td[contains(label,'Customer Name or Aliases')]/input")
+	private WebElement customerName;
+
+	@FindBy(how = How.XPATH, using = "//div[@class='pbBottomButtons']//input[@value='Search']")
+	private WebElement customerSearchButton;
 	
 	@FindBy(how = How.XPATH, using = "//td[label='Company Registration']/following-sibling::td[1]/input")
 	private WebElement companyRegistration;
@@ -262,6 +271,8 @@ public class AccountsPage extends PageObject {
     }
     
     public void newAccountChild() {
+    	customerName.sendKeys("xyz12345");
+    	customerSearchButton.click();
     	newAccountButtonChild.click();
     }
     
