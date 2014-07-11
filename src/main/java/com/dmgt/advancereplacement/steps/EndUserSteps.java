@@ -1,5 +1,10 @@
 package com.dmgt.advancereplacement.steps;
 
+import java.util.Random;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
@@ -29,6 +34,12 @@ public class EndUserSteps extends ScenarioSteps {
     }
     
     @Step
+    public void checkCustRef() {
+//        assertThat(dictionaryPage.getDefinitions()).contains(definition);
+//    	assertThat(accountsPage.verifyNumeric()).isEqualTo(0);
+    }
+    
+    @Step
     public void is_the_home_page() {
     	accountsPage.open();
     }
@@ -50,7 +61,8 @@ public class EndUserSteps extends ScenarioSteps {
     
     
     @Step
-	public void selectType(String mytype) {    	
+	public void selectType(String mytype) {   
+    	
     	accountsPage.type(mytype);						
 	}
 
@@ -103,14 +115,102 @@ public class EndUserSteps extends ScenarioSteps {
 	}
 
     @Step
-	public void fillInMandatoryFieldsForBooking() {    	
-		accountsPage.accountName("MyNewAccount");			
+	public void fillInMandatoryFieldsForBooking() { 
+    	
+		accountsPage.accountName("AUTOBOOKING" + accountAppend());			
+	}
+    
+    public int accountAppend()
+    {
+    	Random rand = new Random();
+   		return rand.nextInt(900) + 10;		
+    }
+
+    @Step
+	public void fillInMandatoryFieldsForBilling() {   
+		accountsPage.accountName("AUTOBILLING" + accountAppend());	
+		accountsPage.phoneNumber("123123123123");
+		accountsPage.billingStreet("AnyStreet");
+		accountsPage.postCode("BT60JH");
+	}
+    
+    @Step
+	public void fillInIndustryCategory() {
+    	waitMillis(20000);
+    	accountsPage.editIndustryCategory();
+    	
+    }
+    
+    @Step
+	public void clickAccountMapping() {    	
+		accountsPage.accountMapping();	
+	}
+    
+    @Step
+    public void clickFinanceAccount() {    	
+		accountsPage.financeAccount();	
+	}
+    
+    @Step
+	public void returnToBookingAccount() {    	
+		accountsPage.accountMappingBookingLink();	
 	}
 
     @Step
-	public void fillInMandatoryFieldsForBilling() {    	
-		accountsPage.accountName("MyNewAccount");			
+	public void returnToBillingAccount() {    	
+		accountsPage.accountMappingBillingLink();	
 	}
+    
+    @Step
+    public void checkAccountMapping() {    	
+		assertThat(accountsPage.getCustomerRef()).matches("\\d+");	
+	}
+	
+    @Step
+    public void checkFinanceAccount() {    	
+		assertThat(accountsPage.getSOPID()).matches("\\d+");	
+	}    
+    
+    @Step
+    public void createCCICustomerMail()
+    {
+    	accountsPage.createCCICustomerMail();
+		WebDriver browser3 = getDriver();
+		Alert alt = browser3.switchTo().alert();
+		System.out.println("Prefab Sprouts " + alt.getText());
+		alt.accept();
+		
+		waitMillis(8000);
+		
+		alt = browser3.switchTo().alert();
+		System.out.println("Prefab Sprouts " + alt.getText());
+		alt.accept();
+
+    }
+    
+    
+    public static void waitMillis(long waitTimeMillis) {
+        long startTimeMillis = System.currentTimeMillis();
+        long finishTimeMillis = startTimeMillis + waitTimeMillis;
+        long waitLength;
+        while ((waitLength = finishTimeMillis - System.currentTimeMillis()) > 0) {
+            try {
+                Thread.sleep(waitLength);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    @Step
+	public void fillInMandatoryFieldsForAdvertising() {
+    	accountsPage.accountName("MyNewAccount1234");
+    	accountsPage.firstName("Michael");
+    	accountsPage.phoneNumber("01234567890");
+    	accountsPage.salutation("M");
+    	accountsPage.billingStreet("Any Street");
+    	accountsPage.postCode("BT60JH");
+    }
     
     @Step
 	public void saveForm() {    	
@@ -123,9 +223,29 @@ public class EndUserSteps extends ScenarioSteps {
 	}
     
     @Step
+	public void createNewRelationshipBillingToBooking()
+    {
+    	accountsPage.createNewRelationshipBillingToBooking();    	
+    }
+    
+    @Step
+	public void createNewRelationshipBookingToClient()
+    {
+    	accountsPage.createNewRelationshipBookingToClient();    	
+    }
+    
+    @Step
+	public void verifyRelationship()
+    {
+    	
+    	assertThat(accountsPage.verifyRelationship().matches("XYZABC"));
+    }
+    
+    @Step
 	public void navigateNewAccountPage(String recordType) {
     	
     	accountsPage.clickLinkNewAccount();
+//    	accountsPage.clickExistingAccount();
 		accountsPage.newAccount();
 		accountsPage.newAccountChild();
 		accountsPage.recordType(recordType);

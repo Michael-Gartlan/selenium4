@@ -24,7 +24,7 @@ public class DefinitionSteps {
 	@When("I login to glue as Mail user")
 	public void login()
 			throws InterruptedException {
-		endUser.login("michael.gartlan@dmgmedia.co.uk.prodmirror", "Autumn_12");
+		endUser.login("michael.gartlan@dmgmedia.co.uk.systest", "Summer_12");
 	}
 	
 	@When("I navigate to the New Account page with Record Type '$recordType'")
@@ -33,10 +33,65 @@ public class DefinitionSteps {
 		endUser.navigateNewAccountPage(recordType);
 	}
 	
+	@When("I create a new Relationship of type Booking")
+	public void createNewRelationshipTypeBooking()
+			throws InterruptedException {
+		endUser.createNewRelationshipBookingToClient();
+	}
+
+	@When("I create a new Relationship of type Billing")
+	public void createNewRelationshipTypeBilling()
+			throws InterruptedException {
+		endUser.createNewRelationshipBillingToBooking();
+	}
+	
+	@Then("the relationship is successfully made")
+	public void verifyRelationship()
+			throws InterruptedException {
+		endUser.verifyRelationship();
+	}
+	
+	
 	@When("I create a new account")
 	public void newAccountButton()
 			throws InterruptedException {
 		endUser.newAccount();
+	}
+
+	@When("I click on Finance Account")
+	public void clickFinanceAccount()
+			throws InterruptedException {
+		endUser.clickFinanceAccount();
+	}
+	
+	@When("I click on Account Mapping")
+	public void clickAccountMapping()
+			throws InterruptedException {
+		endUser.clickAccountMapping();
+	}
+
+	@When("I return to Booking Account")
+	public void returnToBookingAccount()
+			throws InterruptedException {
+		endUser.returnToBookingAccount();
+	}
+	
+	@When("I return to Billing Account")
+	public void returnToBillingAccount()
+			throws InterruptedException {
+		endUser.returnToBillingAccount();
+	}
+
+	@When("I verify Account Mapping")
+	public void checkAccountMapping()
+			throws InterruptedException {
+		endUser.checkAccountMapping();
+	}
+
+	@When("I verify Finance Account")
+	public void checkFinanceAccount()
+			throws InterruptedException {
+		endUser.checkFinanceAccount();
 	}
 	
 	@When("I fill in Mandatory fields for Booking Agency")
@@ -50,7 +105,25 @@ public class DefinitionSteps {
 			throws InterruptedException {
 		endUser.fillInMandatoryFieldsForBilling();
 	}
-		
+	
+	@When("I add Industry Category")
+	public void fillInIndustryCategory()
+			throws InterruptedException {
+		endUser.fillInIndustryCategory();
+	}
+
+	@When("I link with CCI")
+	public void linkWithCCI()
+			throws InterruptedException {
+		endUser.createCCICustomerMail();
+	}
+	
+	@When("I fill in Mandatory fields for Advertising")
+	public void fillInMandatoryFieldsForAdvertising()
+			throws InterruptedException {
+		endUser.fillInMandatoryFieldsForAdvertising();
+	}
+	
 	@Then("page is Saved successfully without Error")
 	public void checkPageSavedSuccessfully()
 			throws InterruptedException {

@@ -6,10 +6,15 @@ import net.thucydides.core.annotations.DefaultUrl;
 import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.How;
 
 import static org.fest.assertions.Assertions.assertThat;
+
+
+
+
 
 
 
@@ -21,6 +26,8 @@ import org.openqa.selenium.support.FindBy;
 
 
 
+
+import org.openqa.selenium.support.ui.Select;
 
 import net.thucydides.core.pages.WebElementFacade;
 //import net.thucydides.core.annotations.findby.FindBy;
@@ -35,7 +42,6 @@ import static ch.lambdaj.Lambda.convert;
 @DefaultUrl("https://test.salesforce.com")
 public class AccountsPage extends PageObject {
 
-
 	@FindBy(name="search")
     private WebElementFacade searchTerms;
 
@@ -45,11 +51,29 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[name='q']")
 	private WebElement searchField;
 
+	@FindBy(how = How.CSS, using = "//td[contains(label,'Role')]/following-sibling::td/span/select")
+	private WebElement role;
+	
 	@FindBy(how = How.CSS, using = "input[name='username']")
 	private WebElement userName;
 	
 	@FindBy(how = How.CSS, using = "input[name='pw']")
 	private WebElement myPassword;
+	
+	@FindBy(how = How.PARTIAL_LINK_TEXT, using = "AM-")
+	private WebElement accountMapping;
+
+	@FindBy(how = How.PARTIAL_LINK_TEXT, using = "-Mail Advertising")
+	private WebElement financeAccount;
+	
+	@FindBy(how = How.PARTIAL_LINK_TEXT, using = "AUTOBILLING")
+	private WebElement accountMappingBilling;
+
+	@FindBy(how = How.PARTIAL_LINK_TEXT, using = "AUTOBOOKING")
+	private WebElement accountMappingBooking;
+	
+	@FindBy(how = How.CSS, using = "//td[text()='Customer Ref']/following-sibling::td[1]")
+	private WebElement myMappingCustomerRef;
 
 	@FindBy(how = How.XPATH, using = "//td[contains(label, 'Record Type of new record')]/following-sibling::td[1]/div/select")
 	private WebElement recordType;
@@ -137,12 +161,23 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[value=' New ']")
 	private WebElement newAccountButton;
 
+	@FindBy(how = How.LINK_TEXT, using = "123Client")
+	private WebElement existingAccount;
 	
 	@FindBy(how = How.XPATH, using = "id('j_id0:j_id1:i:f:pb:pbb:bottom:next')")
 	private WebElement next;
 
 	@FindBy(how = How.CSS, using = "input[value='Finish']")
 	private WebElement finish;
+
+	@FindBy(how = How.XPATH, using = "//input[@title='New Relationship']")
+	private WebElement newRelationship;
+	
+	@FindBy(how = How.XPATH, using = "//td[@id='bottomButtonRow']/input[@title='Save']")
+	private WebElement saveRelationship;
+
+	@FindBy(how = How.XPATH, using = "//td[contains(label,'Account B')]/following-sibling::td[1]/div/span/input")
+	private WebElement accountB;
 	
 	@FindBy(how = How.CSS, using = "//td[div='DM Default']")
 	private WebElement DMDefault;
@@ -231,7 +266,7 @@ public class AccountsPage extends PageObject {
 	@FindBy(how = How.CSS, using = "input[value='Create CCI Customer-Metro']")
 	private WebElement createCCICustomerMetro;
 
-	@FindBy(how = How.CSS, using = "input[value='Edit']")
+	@FindBy(how = How.XPATH, using = "//td[@id='bottomButtonRow']/input[@type='submit' and @value='Edit']")
 	private WebElement Edit;
 	
 	@FindBy(how = How.CSS, using = "input[value='Create Direct Order']")
@@ -259,7 +294,8 @@ public class AccountsPage extends PageObject {
     }
     
     public void type(String mytype) {
-    	type.sendKeys(mytype);
+    	Select droplist = new Select(find(By.id("acc6")));   
+    	droplist.selectByVisibleText(mytype);
     }
     
     public void newAccount() {
@@ -270,23 +306,131 @@ public class AccountsPage extends PageObject {
     	accounts.click();
     }
     
+    public void clickExistingAccount() {
+    	existingAccount.click();
+    }
+    
     public void newAccountChild() {
     	customerName.sendKeys("xyz12345");
     	customerSearchButton.click();
     	newAccountButtonChild.click();
     }
     
-    public void recordType(String type) {
-    	recordType.sendKeys(type);
-    }
+    public void recordType(String mytype) {
+    	Select droplist = new Select(find(By.id("p3")));   
+    	droplist.selectByVisibleText(mytype);
+    	}
 
     
     public void accountName(String name) {
     	accountName.sendKeys(name);
     }
 
+    public void editIndustryCategory() {
+    	
+    	WebDriver x = getDriver().switchTo().frame(getDriver().findElement(By.xpath("//iframe[@title='AccountIndustryCategory']")));
+    	x.findElement(By.cssSelector("//td/input[@value='Edit']")).click();;
+    }
+    
+    public void phoneNumber(String myPhoneNumber) {
+    	phone.sendKeys(myPhoneNumber);
+    }
+
+    public void salutation(String mySalutation) {
+    	salutation.sendKeys(mySalutation);
+    }
+    
+    public void firstName(String myFirstName) {
+    	firstName.sendKeys(myFirstName);
+    }
+    
+    public void billingStreet(String myStreet) {
+    	billingStreet.sendKeys(myStreet);
+    }
+
+    public void postCode(String myPostCode) {
+    	billingPostCode.sendKeys(myPostCode);
+    }
+    
+    public void createCCICustomerMail()
+    {
+    	createCCICustomerMail.click();
+    }
+
+    public void accountMapping()
+    {
+    	accountMapping.click();
+    }
+
+    public void financeAccount()
+    {
+    	financeAccount.click();
+    }
+    
+    public void accountMappingBookingLink()
+    {
+    	accountMappingBooking.click();
+    }
+
+    public void accountMappingBillingLink()
+    {
+    	accountMappingBilling.click();
+    }
+    
+    public String getCustomerRef()
+    {        
+    	WebElementFacade result = null;
+    	result = element(By.xpath("//td[text()='Customer Ref']/following-sibling::td[1]"));	
+    	return result.getText();    	
+    }
+    
+    public String getSOPID()
+    {        	
+    	WebElementFacade result = null;
+    	result = element(By.xpath("//td[text()='SOP ID']/following-sibling::td[1]"));	
+    	return result.getText();    	    	
+    }
     
     public void checkPageSavedSuccessfully(String name) {
+    	
+    }
+
+    public void createNewRelationshipBillingToBooking() {
+    	newRelationship.click();
+    	accountB.sendKeys("123Billing");
+    	Select droplist = new Select(find(By.xpath("//td[contains(label,'Role')]/following-sibling::td/span/select")));   
+    	droplist.selectByVisibleText("Billing");
+    	saveRelationship.click();
+    	waitMillis(5000);    	
+    }
+
+    public void createNewRelationshipBookingToClient() {
+    	newRelationship.click();
+    	accountB.sendKeys("123Client");
+    	Select droplist = new Select(find(By.xpath("//td[contains(label,'Role')]/following-sibling::td/span/select")));   
+    	droplist.selectByVisibleText("Booking");
+    	saveRelationship.click();
+    	waitMillis(5000);    	
+    }
+    
+    public static void waitMillis(long waitTimeMillis) {
+        long startTimeMillis = System.currentTimeMillis();
+        long finishTimeMillis = startTimeMillis + waitTimeMillis;
+        long waitLength;
+        while ((waitLength = finishTimeMillis - System.currentTimeMillis()) > 0) {
+            try {
+                Thread.sleep(waitLength);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    public String verifyRelationship() {
+
+    	WebElementFacade result = null;
+    	result = element(By.xpath("//td/div[@id='Name_ileinner']"));	
+    	return result.getText();  
     	
     }
     
@@ -319,11 +463,9 @@ public class AccountsPage extends PageObject {
     	}
     	catch(Exception e)
     	{
-//    		JOptionPane.showMessageDialog(null, e);
     		returnValue = 0;
     	}
     	
-    	JOptionPane.showMessageDialog(null, returnValue); 
         
         return returnValue;
     }
