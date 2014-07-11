@@ -53,7 +53,7 @@ When I fill in Mandatory fields for Booking Agency
 When I click on Save
 When I create a new Relationship of type Booking
 Then the relationship is successfully made
-
+ 
 Scenario: Create a Client Advertiser Account
 Given the user is on the Salesforce home page
 When I login to glue as Mail user
