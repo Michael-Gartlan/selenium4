@@ -118,7 +118,7 @@ public class DefinitionSteps {
 		endUser.createCCICustomerMail();
 	}
 	
-	@When("I fill in Mandatory fields for Advertising")
+	@When("I fill in Mandatory fields for Advertiser")
 	public void fillInMandatoryFieldsForAdvertising()
 			throws InterruptedException {
 		endUser.fillInMandatoryFieldsForAdvertising();

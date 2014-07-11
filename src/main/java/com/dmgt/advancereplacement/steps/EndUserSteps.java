@@ -204,7 +204,7 @@ public class EndUserSteps extends ScenarioSteps {
     
     @Step
 	public void fillInMandatoryFieldsForAdvertising() {
-    	accountsPage.accountName("MyNewAccount1234");
+    	accountsPage.accountName("AUTOADVERTISER" + accountAppend());
     	accountsPage.firstName("Michael");
     	accountsPage.phoneNumber("01234567890");
     	accountsPage.salutation("M");
