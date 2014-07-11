@@ -54,3 +54,34 @@ When I click on Save
 When I create a new Relationship of type Booking
 Then the relationship is successfully made
 
+Scenario: Create a Client Advertiser Account
+Given the user is on the Salesforce home page
+When I login to glue as Mail user
+When I navigate to the New Account page with Record Type 'Advertiser'
+When I select Account Type as 'Client'
+When I fill in Mandatory fields for Advertiser
+When I click on Save
+
+Scenario: Create a Brand Advertiser Account
+Given the user is on the Salesforce home page
+When I login to glue as Mail user
+When I navigate to the New Account page with Record Type 'Advertiser'
+When I select Account Type as 'Brand'
+When I fill in Mandatory fields for Advertiser
+When I click on Save
+
+Scenario: Create a Charity Advertiser Account
+Given the user is on the Salesforce home page
+When I login to glue as Mail user
+When I navigate to the New Account page with Record Type 'Advertiser'
+When I select Account Type as 'Charity'
+When I fill in Mandatory fields for Advertiser
+When I click on Save
+
+Scenario: Create a Brand Advertiser with address Account
+Given the user is on the Salesforce home page
+When I login to glue as Mail user
+When I navigate to the New Account page with Record Type 'Advertiser'
+When I select Account Type as 'Charity'
+When I fill in Mandatory fields for Advertiser
+When I click on Save
